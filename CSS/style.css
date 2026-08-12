@@ -1,0 +1,1254 @@
+/* =========================================================
+   RESET
+   ========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #F3F4F6;
+    color: #111827;
+    overflow-x: hidden;
+}
+
+
+/* =========================================================
+   LAYOUT PRINCIPAL
+   ========================================================= */
+
+.container {
+    display: grid;
+    grid-template-columns: 260px minmax(0, 1fr);
+
+    min-height: 100vh;
+    width: 100%;
+}
+
+.content {
+    min-width: 0;
+    width: 100%;
+}
+
+/* =========================================================
+   SIDEBAR
+   ========================================================= */
+
+aside {
+    width: 260px;
+    min-height: 100vh;
+
+    padding: 30px;
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    background: #111827;
+}
+
+
+/* LOGO */
+
+.logo {
+    margin-bottom: 40px;
+}
+
+.logo h1 {
+    color: #FFFFFF;
+    font-size: 2rem;
+    margin-bottom: 5px;
+}
+
+.logo p {
+    color: #9CA3AF;
+    font-size: 0.9rem;
+}
+
+
+/* MENU */
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.menu a {
+    padding: 12px 15px;
+
+    color: #D1D5DB;
+    text-decoration: none;
+
+    border-radius: 8px;
+
+    transition: all 0.2s ease;
+}
+
+.menu a:hover {
+    background: #1F2937;
+    color: #FFFFFF;
+}
+
+.menu .active {
+    background: #2563EB;
+    color: #FFFFFF;
+    font-weight: bold;
+}
+
+
+/* PERFIL */
+
+.profile {
+    padding-top: 20px;
+
+    color: #FFFFFF;
+
+    border-top: 1px solid #374151;
+}
+
+.profile h3 {
+    margin-bottom: 5px;
+}
+
+.profile p {
+    color: #9CA3AF;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+header {
+    min-height: 80px;
+    width: 100%;
+
+    padding: 15px 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: #FFFFFF;
+    border-bottom: 1px solid #E5E7EB;
+}
+
+
+/* =========================================================
+   BUSCA E FILTROS
+   ========================================================= */
+
+.search {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.search input {
+    width: 300px;
+    padding: 12px 15px;
+
+    border: 1px solid #D1D5DB;
+    border-radius: 8px;
+
+    font-size: 14px;
+
+    outline: none;
+
+    transition: all 0.2s ease;
+}
+
+.search input:focus {
+    border-color: #2563EB;
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
+}
+
+.search select {
+    padding: 11px 12px;
+
+    border: 1px solid #D1D5DB;
+    border-radius: 8px;
+
+    background: #FFFFFF;
+
+    font-size: 14px;
+
+    cursor: pointer;
+    outline: none;
+}
+
+
+/* =========================================================
+   ÁREA DIREITA DO HEADER
+   ========================================================= */
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+
+/* FOTO */
+
+.header-right img {
+    width: 45px;
+    height: 45px;
+
+    border-radius: 50%;
+
+    background: #D1D5DB;
+
+    object-fit: cover;
+}
+
+
+/* =========================================================
+   NOTIFICAÇÕES
+   ========================================================= */
+
+.notification {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.notification button {
+    position: relative;
+
+    width: 45px;
+    height: 45px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: #F3F4F6;
+
+    font-size: 18px;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+}
+
+.notification button:hover {
+    background: #2563EB;
+    color: #FFFFFF;
+}
+
+.notification-badge {
+    position: absolute;
+    top: -3px;
+    right: -3px;
+
+    min-width: 18px;
+    height: 18px;
+
+    padding: 2px 5px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #DC2626;
+    color: #FFFFFF;
+
+    border: 2px solid #FFFFFF;
+    border-radius: 50%;
+
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.notification-panel {
+    display: none;
+
+    position: absolute;
+    top: 55px;
+    right: 0;
+
+    width: 340px;
+
+    padding: 20px;
+
+    background: #FFFFFF;
+    border-radius: 12px;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+
+    z-index: 1000;
+}
+
+.notification-panel h3 {
+    margin-bottom: 15px;
+}
+
+.notification-item {
+    display: flex;
+    gap: 12px;
+
+    padding: 12px 0;
+
+    border-bottom: 1px solid #E5E7EB;
+}
+
+.notification-item:last-child {
+    border-bottom: none;
+}
+
+.notification-item strong {
+    display: block;
+    margin-bottom: 4px;
+}
+
+.notification-item p,
+.notification-item small {
+    color: #6B7280;
+}
+
+
+/* =========================================================
+   MAIN
+   ========================================================= */
+
+main {
+    width: 100%;
+
+    padding: 30px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.hero {
+    width: 100%;
+
+    padding: 35px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-radius: 16px;
+
+    background: linear-gradient(
+        135deg,
+        #2563EB,
+        #1D4ED8
+    );
+
+    color: #FFFFFF;
+
+    box-shadow: 0 12px 25px rgba(37, 99, 235, 0.25);
+}
+
+.hero-text {
+    min-width: 0;
+}
+
+.hero-text h1 {
+    margin-bottom: 12px;
+    font-size: 2.2rem;
+}
+
+.hero-text p {
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.7;
+}
+
+.hero-date {
+    flex-shrink: 0;
+
+    margin-left: 30px;
+
+    text-align: right;
+}
+
+.hero-date p {
+    margin-bottom: 5px;
+
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.hero-date span {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+
+/* =========================================================
+   CARDS
+   ========================================================= */
+
+.cards {
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+
+    gap: 20px;
+}
+
+.card {
+    min-width: 0;
+
+    padding: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+
+    background: #FFFFFF;
+    border-radius: 12px;
+
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+    transition: all 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+
+/* INFORMAÇÕES DO CARD */
+
+.card-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.card-info h3 {
+    margin-bottom: 10px;
+
+    color: #6B7280;
+
+    font-size: 16px;
+}
+
+
+/* VALOR */
+
+.value {
+    margin-bottom: 10px;
+
+    font-size: clamp(18px, 2vw, 32px);
+    font-weight: bold;
+
+    white-space: nowrap;
+    letter-spacing: -0.5px;
+}
+
+
+/* STATUS */
+
+.positive {
+    color: #16A34A;
+    font-weight: bold;
+}
+
+.negative {
+    color: #DC2626;
+    font-weight: bold;
+}
+
+
+/* ÍCONE */
+
+.card-icon {
+    flex-shrink: 0;
+
+    width: 42px;
+
+    font-size: 42px;
+    line-height: 1;
+
+    text-align: center;
+
+    opacity: 0.85;
+}
+
+
+/* =========================================================
+   GRÁFICO
+   ========================================================= */
+
+.chart {
+    width: 100%;
+
+    padding: 20px;
+
+    background: #FFFFFF;
+
+    border-radius: 12px;
+
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.chart-header h2 {
+    font-size: 22px;
+}
+
+.chart-content {
+    position: relative;
+
+    width: 100%;
+    height: 350px;
+
+    margin-top: 20px;
+
+    border-radius: 10px;
+
+    background: #F3F4F6;
+
+    overflow: hidden;
+}
+
+.chart-content canvas {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+
+/* =========================================================
+   PEDIDOS RECENTES
+   ========================================================= */
+
+.recent-orders {
+    width: 100%;
+
+    padding: 20px;
+
+    background: #FFFFFF;
+
+    border-radius: 12px;
+
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+    overflow-x: auto;
+}
+
+.recent-orders h2 {
+    margin-bottom: 20px;
+}
+
+
+/* =========================================================
+   TABELA
+   ========================================================= */
+
+table {
+    width: 100%;
+
+    border-collapse: collapse;
+}
+
+th {
+    padding: 15px;
+
+    text-align: left;
+
+    color: #6B7280;
+
+    border-bottom: 2px solid #E5E7EB;
+}
+
+td {
+    padding: 15px;
+
+    border-bottom: 1px solid #E5E7EB;
+}
+
+tbody tr {
+    transition: background 0.2s ease;
+}
+
+tbody tr:hover {
+    background: #F9FAFB;
+}
+
+
+/* =========================================================
+   STATUS DOS PEDIDOS
+   ========================================================= */
+
+.status {
+    display: inline-block;
+
+    padding: 6px 12px;
+
+    border-radius: 20px;
+
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.paid {
+    background: #DCFCE7;
+    color: #15803D;
+}
+
+.pending {
+    background: #FEF3C7;
+    color: #B45309;
+}
+
+.shipped {
+    background: #DBEAFE;
+    color: #2563EB;
+}
+
+
+/* =========================================================
+   RESPONSIVIDADE
+   ========================================================= */
+
+/* TABLETS / NOTEBOOKS MENORES */
+
+@media (max-width: 1100px) {
+
+    .cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .hero {
+        gap: 20px;
+    }
+}
+
+
+/* TELAS MÉDIAS */
+
+@media (max-width: 900px) {
+
+    .container {
+        grid-template-columns: 220px minmax(0, 1fr);
+    }
+
+    aside {
+        width: 220px;
+        padding: 20px;
+    }
+
+    header {
+        padding: 15px 20px;
+    }
+
+    main {
+        padding: 20px;
+    }
+
+    .search input {
+        width: 220px;
+    }
+
+    .hero {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .hero-date {
+        margin-left: 0;
+        text-align: left;
+    }
+}
+
+
+/* CELULAR */
+
+@media (max-width: 700px) {
+
+    .container {
+        display: block;
+    }
+
+    aside {
+        width: 100%;
+        min-height: auto;
+        padding: 20px;
+    }
+
+    header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 15px;
+    }
+
+    .search {
+        width: 100%;
+    }
+
+    .search input {
+        width: 100%;
+    }
+
+    .search select {
+        flex: 1;
+    }
+
+    .header-right {
+        justify-content: flex-end;
+    }
+
+    .menu {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .profile {
+        margin-top: 20px;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .hero {
+        padding: 25px;
+    }
+
+    .hero-text h1 {
+        font-size: 1.8rem;
+    }
+
+    .chart-content {
+        height: 280px;
+    }
+
+    .recent-orders {
+        overflow-x: auto;
+    }
+
+    table {
+        min-width: 650px;
+    }
+}
+
+/* TELAS MUITO PEQUENAS */
+
+@media (max-width: 450px) {
+
+    main {
+        padding: 15px;
+        gap: 20px;
+    }
+
+    .hero {
+        padding: 20px;
+    }
+
+    .card {
+        padding: 18px;
+    }
+
+    .chart,
+    .recent-orders {
+        padding: 15px;
+    }
+
+    .notification-panel {
+        position: fixed;
+
+        top: 70px;
+        left: 15px;
+        right: 15px;
+
+        width: auto;
+    }
+}
+
+/* =========================================
+   PÁGINAS DO MENU
+========================================= */
+
+.page-header {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.page-header h1 {
+    margin-bottom: 8px;
+    color: #1e293b;
+}
+
+.page-header p {
+    color: #64748b;
+}
+
+
+/* =========================================
+   TABELAS
+========================================= */
+
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th,
+table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+table th {
+    color: #64748b;
+    font-weight: 600;
+}
+
+table td {
+    color: #1e293b;
+}
+
+
+/* =========================================
+   STATUS
+========================================= */
+
+.status {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.status.pago {
+    color: #15803d;
+    background: #dcfce7;
+}
+
+.status.pendente {
+    color: #b45309;
+    background: #fef3c7;
+}
+
+.status.enviado {
+    color: #2563eb;
+    background: #dbeafe;
+}
+
+
+/* =========================================
+   CONFIGURAÇÕES
+========================================= */
+
+.settings-card {
+    max-width: 700px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    font-weight: 600;
+    color: #334155;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    outline: none;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.form-group input:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.save-button {
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.save-button:hover {
+    background: #1d4ed8;
+}
+
+/* =========================================
+   PRODUTOS
+========================================= */
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(
+        auto-fill,
+        minmax(230px, 1fr)
+    );
+
+    gap: 20px;
+}
+
+
+.product-card {
+    background: #ffffff;
+    border-radius: 14px;
+    overflow: hidden;
+
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.06);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.product-card:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.10);
+}
+
+
+.product-image {
+    height: 200px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #f8fafc;
+}
+
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    padding: 15px;
+
+    box-sizing: border-box;
+}
+
+
+.product-info {
+    padding: 18px;
+}
+
+
+.product-category {
+    display: inline-block;
+
+    color: #2563eb;
+    background: #eff6ff;
+
+    padding: 5px 10px;
+
+    border-radius: 20px;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    text-transform: capitalize;
+}
+
+
+.product-info h3 {
+    margin: 12px 0 8px;
+
+    color: #1e293b;
+
+    font-size: 17px;
+}
+
+
+.product-rating {
+    color: #f59e0b;
+
+    font-size: 14px;
+
+    margin-bottom: 15px;
+}
+
+
+.product-bottom {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 15px;
+}
+
+
+.product-bottom strong {
+    color: #1e293b;
+
+    font-size: 20px;
+}
+
+
+.product-bottom span {
+    color: #64748b;
+
+    font-size: 13px;
+}
+
+
+.product-details-button {
+    width: 100%;
+
+    border: none;
+
+    background: #2563eb;
+
+    color: #ffffff;
+
+    padding: 11px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-weight: 600;
+
+    transition:
+        background 0.2s ease;
+}
+
+
+.product-details-button:hover {
+    background: #1d4ed8;
+}
+
+
+.loading-products {
+    color: #64748b;
+
+    padding: 30px;
+}
+
+
+/* =========================================
+   MODAL DO PRODUTO
+========================================= */
+
+.product-modal {
+    position: fixed;
+
+    inset: 0;
+
+    background:
+        rgba(15, 23, 42, 0.65);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 20px;
+
+    box-sizing: border-box;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition:
+        opacity 0.2s ease,
+        visibility 0.2s ease;
+
+    z-index: 9999;
+}
+
+
+.product-modal.show {
+    opacity: 1;
+
+    visibility: visible;
+}
+
+
+.product-modal-content {
+    position: relative;
+
+    background: #ffffff;
+
+    width: 100%;
+
+    max-width: 600px;
+
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    border-radius: 16px;
+
+    padding: 30px;
+
+    box-sizing: border-box;
+
+    transform: translateY(20px);
+
+    transition:
+        transform 0.2s ease;
+}
+
+
+.product-modal.show
+.product-modal-content {
+
+    transform: translateY(0);
+
+}
+
+
+.close-modal {
+    position: absolute;
+
+    top: 15px;
+
+    right: 18px;
+
+    width: 35px;
+
+    height: 35px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: #f1f5f9;
+
+    color: #334155;
+
+    font-size: 24px;
+
+    cursor: pointer;
+
+    line-height: 1;
+}
+
+
+.modal-product-image {
+    width: 100%;
+
+    height: 250px;
+
+    object-fit: contain;
+
+    margin-bottom: 20px;
+}
+
+
+.product-modal-content h2 {
+    margin: 15px 0 10px;
+
+    color: #1e293b;
+}
+
+
+.modal-description {
+    color: #64748b;
+
+    line-height: 1.6;
+
+    margin-bottom: 25px;
+}
+
+
+.modal-product-info {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 15px;
+}
+
+
+.modal-product-info div {
+    background: #f8fafc;
+
+    padding: 15px;
+
+    border-radius: 10px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+
+.modal-product-info span {
+    color: #64748b;
+
+    font-size: 13px;
+}
+
+
+.modal-product-info strong {
+    color: #1e293b;
+
+    font-size: 17px;
+}
+
+
+@media (max-width: 600px) {
+
+    .products-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .modal-product-info {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+.notification-panel.show {
+    display: block;
+}

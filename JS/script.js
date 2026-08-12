@@ -1,0 +1,1 @@
+console.log("🚀 Nexora Insight iniciado com sucesso!");

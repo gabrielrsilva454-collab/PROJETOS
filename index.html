@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="CSS/reset.css">
+    <link rel="stylesheet" href="CSS/style.css">
+
+    <title>Nexora Insight</title>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <aside>
+
+            <div class="logo">
+                <h1>Nexora</h1>
+                <p>Insight</p>
+            </div>
+
+            <nav class="menu" id="menu">
+
+    <a href="#dashboard" class="active" data-page="dashboard">
+        🏠 Dashboard
+    </a>
+
+    <a href="#clientes" data-page="clientes">
+        👥 Clientes
+    </a>
+
+    <a href="#produtos" data-page="produtos">
+        📦 Produtos
+    </a>
+
+    <a href="#pedidos" data-page="pedidos">
+        🛒 Pedidos
+    </a>
+
+    <a href="#relatorios" data-page="relatorios">
+        📈 Relatórios
+    </a>
+
+    <a href="#configuracoes" data-page="configuracoes">
+        ⚙️ Configurações
+    </a>
+
+</nav>
+
+            <div class="profile">
+                <h3>Rodrigues</h3>
+                <p>Administrador</p>
+            </div>
+
+        </aside>
+
+
+        <div class="content">
+
+
+            <!-- HEADER -->
+
+            <header>
+
+                <div class="search">
+
+                    <input type="text" id="search" placeholder="Pesquisar pedidos...">
+
+                    <select id="statusFilter">
+
+                        <option value="all">
+                            Todos os status
+                        </option>
+
+                        <option value="Pago">
+                            Pago
+                        </option>
+
+                        <option value="Pendente">
+                            Pendente
+                        </option>
+
+                        <option value="Enviado">
+                            Enviado
+                        </option>
+
+                    </select>
+
+
+                    <select id="sortFilter">
+
+                        <option value="default">
+                            Ordenar por
+                        </option>
+
+                        <option value="newest">
+                            Mais recentes
+                        </option>
+
+                        <option value="oldest">
+                            Mais antigos
+                        </option>
+
+                        <option value="highest">
+                            Maior valor
+                        </option>
+
+                        <option value="lowest">
+                            Menor valor
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- NOTIFICAÇÕES -->
+
+                <div class="notification">
+
+                    
+                    <button id="notificationButton">
+
+                        🔔
+
+                        <span class="notification-badge">
+                            3
+                        </span>
+
+                    </button>
+                    ```
+
+
+
+                    <div class="notification-panel" id="notificationPanel">
+
+                        <h3>🔔 Notificações</h3>
+                        
+                        <button
+    id="markNotificationsRead"
+    class="mark-notifications-read">
+
+    Marcar todas como lidas
+
+</button>
+
+                        <div class="notification-item">
+
+                            <span>🛒</span>
+
+                            <div>
+
+                                <strong>
+                                    Novo pedido
+                                </strong>
+
+                                <p>
+                                    Pedido #1027 recebido
+                                </p>
+
+                                <small>
+                                    há 5 minutos
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="notification-item">
+
+                            <span>💰</span>
+
+                            <div>
+
+                                <strong>
+                                    Pagamento confirmado
+                                </strong>
+
+                                <p>
+                                    Pedido #1024 foi pago
+                                </p>
+
+                                <small>
+                                    há 20 minutos
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="notification-item">
+
+                            <span>📦</span>
+
+                            <div>
+
+                                <strong>
+                                    Produto enviado
+                                </strong>
+
+                                <p>
+                                    Pedido #1026 foi enviado
+                                </p>
+
+                                <small>
+                                    há 1 hora
+                                </small>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- CONTEÚDO PRINCIPAL -->
+
+            <main>
+
+
+                <!-- HERO -->
+
+                <section class="hero">
+
+                    <div class="hero-text">
+
+                        <h1 id="greeting">
+                            👋 Bom dia
+                        </h1>
+
+                        <p>
+                            Bem-vindo ao Nexora Insight.
+                        </p>
+
+                        <p>
+                            Acompanhe os principais indicadores
+                            da sua empresa em tempo real.
+                        </p>
+
+                    </div>
+
+
+                    <div class="hero-date">
+
+                        <p id="day-week">
+                            📅 Segunda-feira
+                        </p>
+
+                        <span id="full-date">
+                            28 de Julho de 2026
+                        </span>
+
+                    </div>
+
+                </section>
+
+
+                <!-- CARDS -->
+
+                <section class="cards">
+
+
+                    <div class="card">
+
+                        <div class="card-info">
+
+                            <h3>
+                                Faturamento
+                            </h3>
+
+                            <p class="value" data-value="48500" data-type="money">
+                                0
+                            </p>
+
+                            <span class="positive">
+                                +12% este mês
+                            </span>
+
+                        </div>
+
+                        <div class="card-icon">
+                            💰
+                        </div>
+
+                    </div>
+
+
+                    <div class="card">
+
+                        <div class="card-info">
+
+                            <h3>
+                                Clientes
+                            </h3>
+
+                            <p class="value" data-value="1245" data-type="number">
+                                0
+                            </p>
+
+                            <span class="positive">
+                                +8% este mês
+                            </span>
+
+                        </div>
+
+                        <div class="card-icon">
+                            👥
+                        </div>
+
+                    </div>
+
+
+                    <div class="card">
+
+                        <div class="card-info">
+
+                            <h3>
+                                Pedidos
+                            </h3>
+
+                            <p class="value" data-value="328" data-type="number">
+                                0
+                            </p>
+
+                            <span class="positive">
+                                +5% este mês
+                            </span>
+
+                        </div>
+
+                        <div class="card-icon">
+                            🛒
+                        </div>
+
+                    </div>
+
+
+                    <div class="card">
+
+                        <div class="card-info">
+
+                            <h3>
+                                Produtos
+                            </h3>
+
+                            <p class="value" data-value="86" data-type="number">
+                                0
+                            </p>
+
+                            <span class="negative">
+                                -2% este mês
+                            </span>
+
+                        </div>
+
+                        <div class="card-icon">
+                            📦
+                        </div>
+
+                    </div>
+
+
+                </section>
+
+
+                <!-- GRÁFICO -->
+
+                <section class="chart">
+
+                    <div class="chart-header">
+
+                        <h2>
+                            📈 Vendas dos Últimos 6 Meses
+                        </h2>
+
+                    </div>
+
+
+                    <div class="chart-content">
+
+                        <canvas id="salesChart"></canvas>
+
+                    </div>
+
+                </section>
+
+
+                <!-- PEDIDOS RECENTES -->
+
+                <section class="recent-orders">
+
+                    <h2>
+                        📋 Pedidos Recentes
+                    </h2>
+
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Pedido
+                                </th>
+
+                                <th>
+                                    Cliente
+                                </th>
+
+                                <th>
+                                    Status
+                                </th>
+
+                                <th>
+                                    Valor
+                                </th>
+
+                                <th>
+                                    Data
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="ordersTable"></tbody>
+
+                    </table>
+
+                </section>
+
+
+            </main>
+
+
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script src="JS/greeting.js"></script>
+    <script src="JS/date.js"></script>
+    <script src="JS/chart.js"></script>
+    <script src="JS/cards.js"></script>
+    <script src="JS/menu.js"></script>
+
+    <script src="JS/orders.js"></script>
+    <script src="JS/search.js"></script>
+    <script src="JS/notifications.js"></script>
+
+    <script src="JS/script.js"></script>
+
+</body>
+
+</html>

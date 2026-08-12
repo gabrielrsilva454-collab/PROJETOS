@@ -1,0 +1,23 @@
+[
+    {
+        "numero": "#1024",
+        "cliente": "João Silva",
+        "status": "Pago",
+        "valor": 520,
+        "data": "2026-07-12"
+    },
+    {
+        "numero": "#1025",
+        "cliente": "Maria Souza",
+        "status": "Pendente",
+        "valor": 180,
+        "data": "2026-07-13"
+    },
+    {
+        "numero": "#1026",
+        "cliente": "Pedro Lima",
+        "status": "Enviado",
+        "valor": 760,
+        "data": "2026-07-13"
+    }
+]
