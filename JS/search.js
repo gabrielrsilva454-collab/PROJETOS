@@ -1,186 +1,227 @@
-const searchInput = document.getElementById("search");
-const statusFilter = document.getElementById("statusFilter");
-const sortFilter = document.getElementById("sortFilter");
-const ordersTable = document.getElementById("ordersTable");
+function inicializarPedidos() {
 
-function atualizarPedidos() {
+    const searchInput = document.getElementById("search");
+    const statusFilter = document.getElementById("statusFilter");
+    const sortFilter = document.getElementById("sortFilter");
+    const ordersTable = document.getElementById("ordersTable");
 
-    const textoPesquisa = searchInput.value.toLowerCase();
-    const statusSelecionado = statusFilter.value;
-    const ordemSelecionada = sortFilter.value;
-
-    let pedidosFiltrados = pedidos.filter((pedido) => {
-
-        const pesquisaEncontrada =
-            pedido.numero.toLowerCase().includes(textoPesquisa) ||
-            pedido.cliente.toLowerCase().includes(textoPesquisa);
-
-        const statusEncontrado =
-            statusSelecionado === "all" ||
-            pedido.status === statusSelecionado;
-
-        return pesquisaEncontrada && statusEncontrado;
-    });
-
-
-    // ORDENAR POR DATA
-
-    if (ordemSelecionada === "newest") {
-
-        pedidosFiltrados.sort((a, b) => {
-
-            const dataA = converterData(a.data);
-            const dataB = converterData(b.data);
-
-            return dataB - dataA;
-        });
-
+    // Verifica se os elementos existem
+    if (
+        !searchInput ||
+        !statusFilter ||
+        !sortFilter ||
+        !ordersTable
+    ) {
+        return;
     }
 
 
-    if (ordemSelecionada === "oldest") {
+    function atualizarPedidos() {
 
-        pedidosFiltrados.sort((a, b) => {
+        const textoPesquisa =
+            searchInput.value.toLowerCase().trim();
 
-            const dataA = converterData(a.data);
-            const dataB = converterData(b.data);
+        const statusSelecionado =
+            statusFilter.value;
 
-            return dataA - dataB;
+        const ordemSelecionada =
+            sortFilter.value;
+
+
+        // FILTRAR
+
+        let pedidosFiltrados = pedidos.filter((pedido) => {
+
+            const pesquisaEncontrada =
+                pedido.numero.toLowerCase().includes(textoPesquisa) ||
+                pedido.cliente.toLowerCase().includes(textoPesquisa);
+
+            const statusEncontrado =
+                statusSelecionado === "all" ||
+                pedido.status === statusSelecionado;
+
+            return pesquisaEncontrada && statusEncontrado;
+
         });
 
-    }
 
+        // ORDENAR POR DATA
 
-    // ORDENAR POR VALOR
+        if (ordemSelecionada === "newest") {
 
-    if (ordemSelecionada === "highest") {
+            pedidosFiltrados.sort((a, b) => {
 
-        pedidosFiltrados.sort((a, b) => {
+                return converterData(b.data) -
+                       converterData(a.data);
 
-            const valorA = converterValor(a.valor);
-            const valorB = converterValor(b.valor);
-
-            return valorB - valorA;
-        });
-
-    }
-
-
-    if (ordemSelecionada === "lowest") {
-
-        pedidosFiltrados.sort((a, b) => {
-
-            const valorA = converterValor(a.valor);
-            const valorB = converterValor(b.valor);
-
-            return valorA - valorB;
-        });
-
-    }
-
-
-    // LIMPA A TABELA
-
-    ordersTable.innerHTML = "";
-
-
-    // CRIA AS LINHAS
-
-    pedidosFiltrados.forEach((pedido) => {
-
-        const row = document.createElement("tr");
-
-        let statusClass;
-
-        if (pedido.status === "Pago") {
-
-            statusClass = "paid";
-
-        } else if (pedido.status === "Pendente") {
-
-            statusClass = "pending";
-
-        } else if (pedido.status === "Enviado") {
-
-            statusClass = "shipped";
+            });
 
         }
 
 
-        row.innerHTML = `
-            <td>${pedido.numero}</td>
+        if (ordemSelecionada === "oldest") {
 
-            <td>${pedido.cliente}</td>
+            pedidosFiltrados.sort((a, b) => {
 
-            <td>
-                <span class="status ${statusClass}">
-                    ${pedido.status}
-                </span>
-            </td>
+                return converterData(a.data) -
+                       converterData(b.data);
 
-            <td>${pedido.valor}</td>
+            });
 
-            <td>${pedido.data}</td>
-        `;
+        }
 
 
-        ordersTable.appendChild(row);
+        // ORDENAR POR VALOR
 
-    });
+        if (ordemSelecionada === "highest") {
 
-}
+            pedidosFiltrados.sort((a, b) => {
 
+                return converterValor(b.valor) -
+                       converterValor(a.valor);
 
-// CONVERTE R$ 520,00 PARA 520
+            });
 
-function converterValor(valor) {
-
-    return Number(
-        valor
-            .replace("R$", "")
-            .replace(".", "")
-            .replace(",", ".")
-            .trim()
-    );
-
-}
+        }
 
 
-// CONVERTE 13/07/2026 PARA UMA DATA
+        if (ordemSelecionada === "lowest") {
 
-function converterData(data) {
+            pedidosFiltrados.sort((a, b) => {
 
-    const partes = data.split("/");
+                return converterValor(a.valor) -
+                       converterValor(b.valor);
 
-    return new Date(
-        partes[2],
-        partes[1] - 1,
-        partes[0]
-    );
+            });
 
-}
+        }
 
 
-// EVENTOS
+        // LIMPA A TABELA
 
-searchInput.addEventListener("input", atualizarPedidos);
-
-statusFilter.addEventListener("change", atualizarPedidos);
-
-sortFilter.addEventListener("change", atualizarPedidos);
+        ordersTable.innerHTML = "";
 
 
-searchInput.addEventListener("keydown", (event) => {
+        // NENHUM RESULTADO
 
-    if (event.key === "Enter") {
+        if (pedidosFiltrados.length === 0) {
 
-        atualizarPedidos();
+            ordersTable.innerHTML = `
+                <tr>
+                    <td colspan="5">
+                        Nenhum pedido encontrado.
+                    </td>
+                </tr>
+            `;
+
+            return;
+        }
+
+
+        // CRIA AS LINHAS
+
+        pedidosFiltrados.forEach((pedido) => {
+
+            const row =
+                document.createElement("tr");
+
+
+            let statusClass = "";
+
+
+            if (pedido.status === "Pago") {
+
+                statusClass = "paid";
+
+            } else if (pedido.status === "Pendente") {
+
+                statusClass = "pending";
+
+            } else if (pedido.status === "Enviado") {
+
+                statusClass = "shipped";
+
+            }
+
+
+            row.innerHTML = `
+
+                <td>${pedido.numero}</td>
+
+                <td>${pedido.cliente}</td>
+
+                <td>
+                    <span class="status ${statusClass}">
+                        ${pedido.status}
+                    </span>
+                </td>
+
+                <td>${pedido.valor}</td>
+
+                <td>${pedido.data}</td>
+
+            `;
+
+
+            ordersTable.appendChild(row);
+
+        });
 
     }
 
-});
+
+    // CONVERTE R$ 520,00 PARA 520
+
+    function converterValor(valor) {
+
+        return Number(
+            valor
+                .replace("R$", "")
+                .replace(/\./g, "")
+                .replace(",", ".")
+                .trim()
+        );
+
+    }
 
 
-// MOSTRA OS PEDIDOS AO ABRIR A PÁGINA
+    // CONVERTE 13/07/2026 PARA DATA
 
-atualizarPedidos();
+    function converterData(data) {
+
+        const partes = data.split("/");
+
+        return new Date(
+            partes[2],
+            partes[1] - 1,
+            partes[0]
+        );
+
+    }
+
+
+    // EVENTOS
+
+    searchInput.addEventListener(
+        "input",
+        atualizarPedidos
+    );
+
+
+    statusFilter.addEventListener(
+        "change",
+        atualizarPedidos
+    );
+
+
+    sortFilter.addEventListener(
+        "change",
+        atualizarPedidos
+    );
+
+
+    // MOSTRA OS PEDIDOS
+
+    atualizarPedidos();
+
+}

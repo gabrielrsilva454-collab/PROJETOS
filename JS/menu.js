@@ -30,21 +30,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
         switch (pagina) {
 
-          case "dashboard":
+            case "dashboard":
 
-    main.innerHTML = dashboardHTML;
+                main.innerHTML = dashboardHTML;
 
-    setTimeout(() => {
+                setTimeout(() => {
 
-        if (typeof carregarGrafico === "function") {
+                    if (typeof carregarGrafico === "function") {
 
-            carregarGrafico();
+                        carregarGrafico();
 
-        }
+                    }
 
-    }, 100);
+                }, 100);
 
-    break;
+                break;
 
 
             case "clientes":
@@ -124,9 +124,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 break;
 
 
-           case "produtos":
+            case "produtos":
 
-    main.innerHTML = `
+                main.innerHTML = `
         <section class="page-header">
 
             <h1>📦 Produtos</h1>
@@ -163,24 +163,24 @@ document.addEventListener("DOMContentLoaded", () => {
     `;
 
 
-    const productsGrid =
-        document.getElementById("productsGrid");
+                const productsGrid =
+                    document.getElementById("productsGrid");
 
 
-    function mostrarProdutos() {
+                function mostrarProdutos() {
 
-        productsGrid.innerHTML = "";
-
-
-        produtosAPI.forEach(produto => {
-
-            const card =
-                document.createElement("article");
-
-            card.className = "product-card";
+                    productsGrid.innerHTML = "";
 
 
-            card.innerHTML = `
+                    produtosAPI.forEach(produto => {
+
+                        const card =
+                            document.createElement("article");
+
+                        card.className = "product-card";
+
+
+                        card.innerHTML = `
 
                 <div class="product-image">
 
@@ -235,60 +235,60 @@ document.addEventListener("DOMContentLoaded", () => {
             `;
 
 
-            productsGrid.appendChild(card);
+                        productsGrid.appendChild(card);
 
-        });
-
-
-        adicionarEventosProdutos();
-
-    }
+                    });
 
 
-    function adicionarEventosProdutos() {
+                    adicionarEventosProdutos();
 
-        const buttons =
-            document.querySelectorAll(
-                ".product-details-button"
-            );
+                }
 
 
-        buttons.forEach(button => {
+                function adicionarEventosProdutos() {
 
-            button.addEventListener("click", () => {
-
-                const productId =
-                    Number(button.dataset.productId);
-
-
-                const produto =
-                    produtosAPI.find(
-                        item => item.id === productId
-                    );
+                    const buttons =
+                        document.querySelectorAll(
+                            ".product-details-button"
+                        );
 
 
-                if (!produto) return;
+                    buttons.forEach(button => {
+
+                        button.addEventListener("click", () => {
+
+                            const productId =
+                                Number(button.dataset.productId);
 
 
-                mostrarDetalhes(produto);
-
-            });
-
-        });
-
-    }
+                            const produto =
+                                produtosAPI.find(
+                                    item => item.id === productId
+                                );
 
 
-    function mostrarDetalhes(produto) {
-
-        const modal =
-            document.getElementById("productModal");
-
-        const details =
-            document.getElementById("productDetails");
+                            if (!produto) return;
 
 
-        details.innerHTML = `
+                            mostrarDetalhes(produto);
+
+                        });
+
+                    });
+
+                }
+
+
+                function mostrarDetalhes(produto) {
+
+                    const modal =
+                        document.getElementById("productModal");
+
+                    const details =
+                        document.getElementById("productDetails");
+
+
+                    details.innerHTML = `
 
             <img
                 class="modal-product-image"
@@ -350,134 +350,106 @@ document.addEventListener("DOMContentLoaded", () => {
         `;
 
 
-        modal.classList.add("show");
-
-    }
-
-
-    const closeButton =
-        document.getElementById("closeProductModal");
-
-
-    const modal =
-        document.getElementById("productModal");
-
-
-    closeButton.addEventListener(
-        "click",
-        () => {
-
-            modal.classList.remove("show");
-
-        }
-    );
-
-
-    modal.addEventListener("click", event => {
-
-        if (event.target === modal) {
-
-            modal.classList.remove("show");
-
-        }
-
-    });
-
-
-    if (produtosAPI.length > 0) {
-
-        mostrarProdutos();
-
-    } else {
-
-        const intervalo =
-            setInterval(() => {
-
-                if (produtosAPI.length > 0) {
-
-                    clearInterval(intervalo);
-
-                    mostrarProdutos();
+                    modal.classList.add("show");
 
                 }
 
-            }, 100);
 
-    }
+                const closeButton =
+                    document.getElementById("closeProductModal");
 
-    break;
+
+                const modal =
+                    document.getElementById("productModal");
+
+
+                closeButton.addEventListener(
+                    "click",
+                    () => {
+
+                        modal.classList.remove("show");
+
+                    }
+                );
+
+
+                modal.addEventListener("click", event => {
+
+                    if (event.target === modal) {
+
+                        modal.classList.remove("show");
+
+                    }
+
+                });
+
+
+                if (produtosAPI.length > 0) {
+
+                    mostrarProdutos();
+
+                } else {
+
+                    const intervalo =
+                        setInterval(() => {
+
+                            if (produtosAPI.length > 0) {
+
+                                clearInterval(intervalo);
+
+                                mostrarProdutos();
+
+                            }
+
+                        }, 100);
+
+                }
+
+                break;
 
 
             case "pedidos":
 
-                main.innerHTML = `
-                    <section class="page-header">
-                        <h1>🛒 Pedidos</h1>
-                        <p>Acompanhe todos os pedidos realizados.</p>
-                    </section>
+    main.innerHTML = `
+        <section class="page-header">
+            <h1>Pedidos</h1>
+            <p>Acompanhe todos os pedidos realizados.</p>
+        </section>
 
-                    <section class="card">
+        <section class="card orders-table-card">
 
-                        <h2>📋 Todos os Pedidos</h2>
+            <div class="orders-header">
+                <h2>Todos os Pedidos</h2>
+            </div>
 
-                        <table>
+            <div class="table-container">
 
-                            <thead>
-                                <tr>
-                                    <th>Pedido</th>
-                                    <th>Cliente</th>
-                                    <th>Status</th>
-                                    <th>Valor</th>
-                                    <th>Data</th>
-                                </tr>
-                            </thead>
+                <table>
 
-                            <tbody>
+                    <thead>
+                        <tr>
+                            <th>Pedido</th>
+                            <th>Cliente</th>
+                            <th>Status</th>
+                            <th>Valor</th>
+                            <th>Data</th>
+                        </tr>
+                    </thead>
 
-                                <tr>
-                                    <td>#1024</td>
-                                    <td>João Silva</td>
-                                    <td>
-                                        <span class="status pago">
-                                            Pago
-                                        </span>
-                                    </td>
-                                    <td>R$ 520,00</td>
-                                    <td>12/07/2026</td>
-                                </tr>
+                    <tbody id="ordersTable"></tbody>
 
-                                <tr>
-                                    <td>#1025</td>
-                                    <td>Maria Souza</td>
-                                    <td>
-                                        <span class="status pendente">
-                                            Pendente
-                                        </span>
-                                    </td>
-                                    <td>R$ 180,00</td>
-                                    <td>13/07/2026</td>
-                                </tr>
+                </table>
 
-                                <tr>
-                                    <td>#1026</td>
-                                    <td>Pedro Lima</td>
-                                    <td>
-                                        <span class="status enviado">
-                                            Enviado
-                                        </span>
-                                    </td>
-                                    <td>R$ 760,00</td>
-                                    <td>13/07/2026</td>
-                                </tr>
+            </div>
 
-                            </tbody>
+        </section>
+    `;
 
-                        </table>
+    if (typeof inicializarPedidos === "function") {
+        inicializarPedidos();
+    }
 
-                    </section>
-                `;
-
-                break;
+    break;
 
 
             case "relatorios":
