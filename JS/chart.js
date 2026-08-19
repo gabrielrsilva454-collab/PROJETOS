@@ -184,3 +184,6 @@ document.addEventListener(
     "DOMContentLoaded",
     carregarGrafico
 );
+
+// Exposto para o menu.js poder chamar de novo ao voltar pro dashboard
+window.carregarGrafico = carregarGrafico;

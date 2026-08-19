@@ -107,3 +107,6 @@ async function iniciarCards() {
 }
 
 document.addEventListener("DOMContentLoaded", iniciarCards);
+
+// Exposto para o menu.js poder chamar de novo ao voltar pro dashboard
+window.iniciarCards = iniciarCards;

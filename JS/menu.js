@@ -36,11 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 setTimeout(() => {
 
-                    if (typeof carregarGrafico === "function") {
-
-                        carregarGrafico();
-
-                    }
+                    inicializarDashboard();
 
                 }, 100);
 
@@ -445,8 +441,8 @@ document.addEventListener("DOMContentLoaded", () => {
         </section>
     `;
 
-    if (typeof inicializarPedidos === "function") {
-        inicializarPedidos();
+    if (typeof window.iniciarPedidos === "function") {
+        window.iniciarPedidos();
     }
 
     break;
@@ -612,17 +608,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function inicializarDashboard() {
 
-        // Permite que os scripts antigos continuem funcionando
-        if (typeof inicializarCards === "function") {
-            inicializarCards();
+        // cards.js, chart.js e orders.js são módulos ES,
+        // por isso expõem essas funções em window explicitamente
+        if (typeof window.iniciarCards === "function") {
+            window.iniciarCards();
         }
 
-        if (typeof inicializarChart === "function") {
-            inicializarChart();
+        if (typeof window.carregarGrafico === "function") {
+            window.carregarGrafico();
         }
 
-        if (typeof carregarPedidos === "function") {
-            carregarPedidos();
+        if (typeof window.iniciarPedidos === "function") {
+            window.iniciarPedidos();
         }
 
     }
