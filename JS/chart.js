@@ -1,3 +1,5 @@
+import { getSalesHistory } from "./dataService.js";
+
 let salesChart = null;
 
 async function carregarGrafico() {
@@ -8,47 +10,10 @@ async function carregarGrafico() {
 
     try {
 
-        const response = await fetch(
-            "https://dummyjson.com/carts"
-        );
+        const historico = await getSalesHistory();
 
-        const data = await response.json();
-
-        const carts = data.carts;
-
-        console.log("Dados recebidos para o gráfico:", carts);
-
-
-        // Divide os carrinhos em 6 períodos
-        const grupos = [
-            carts.slice(0, 4),
-            carts.slice(4, 8),
-            carts.slice(8, 12),
-            carts.slice(12, 16),
-            carts.slice(16, 20),
-            carts.slice(20, 24)
-        ];
-
-
-        // Soma o faturamento de cada período
-        const valores = grupos.map(grupo => {
-
-            return grupo.reduce(
-                (total, cart) => total + cart.total,
-                0
-            );
-
-        });
-
-
-        const labels = [
-            "Jan",
-            "Fev",
-            "Mar",
-            "Abr",
-            "Mai",
-            "Jun"
-        ];
+        const labels = historico.map((item) => item.mes);
+        const valores = historico.map((item) => item.faturamento);
 
 
         // Se o gráfico já existir,

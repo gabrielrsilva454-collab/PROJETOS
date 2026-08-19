@@ -1,3 +1,5 @@
+import { getStats } from "./dataService.js";
+
 // Formatar Valores
 
 function formatValue(value, type) {
@@ -17,10 +19,7 @@ function formatValue(value, type) {
 
 // Animar Cards
 
-function animateValue(element) {
-
-    const target = Number(element.dataset.value);
-    const type = element.dataset.type;
+function animateValue(element, target, type) {
 
     const duration = 1000;
     const startTime = performance.now();
@@ -48,14 +47,63 @@ function animateValue(element) {
 }
 
 
+// Atualiza o texto de variação (+12% este mês / -2% este mês)
+
+function atualizarVariacao(element, change) {
+
+    const changeEl = element.parentElement.querySelector(
+        ".positive, .negative"
+    );
+
+    if (!changeEl) {
+
+        return;
+
+    }
+
+    const sinal = change >= 0 ? "+" : "";
+
+    changeEl.textContent = `${sinal}${change}% este mês`;
+
+    changeEl.className = change >= 0 ? "positive" : "negative";
+
+}
+
+
 // =========================
 // Executar Animação
 // =========================
 
-const values = document.querySelectorAll(".value");
+async function iniciarCards() {
 
-values.forEach((value) => {
+    try {
 
-    animateValue(value);
+        const stats = await getStats();
 
-});
+        document.querySelectorAll(".value").forEach((element) => {
+
+            const key = element.dataset.key;
+
+            const stat = stats[key];
+
+            if (!stat) {
+
+                return;
+
+            }
+
+            animateValue(element, stat.value, stat.type);
+
+            atualizarVariacao(element, stat.change);
+
+        });
+
+    } catch (error) {
+
+        console.error("Erro ao carregar os cards:", error);
+
+    }
+
+}
+
+document.addEventListener("DOMContentLoaded", iniciarCards);

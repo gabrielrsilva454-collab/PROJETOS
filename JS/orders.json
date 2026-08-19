@@ -1,23 +1,26 @@
-[
-    {
-        "numero": "#1024",
-        "cliente": "João Silva",
-        "status": "Pago",
-        "valor": 520,
-        "data": "2026-07-12"
-    },
-    {
-        "numero": "#1025",
-        "cliente": "Maria Souza",
-        "status": "Pendente",
-        "valor": 180,
-        "data": "2026-07-13"
-    },
-    {
-        "numero": "#1026",
-        "cliente": "Pedro Lima",
-        "status": "Enviado",
-        "valor": 760,
-        "data": "2026-07-13"
-    }
-]
+{
+  "salesHistory": [
+    { "mes": "Jan", "faturamento": 32000, "pedidos": 210 },
+    { "mes": "Fev", "faturamento": 35500, "pedidos": 225 },
+    { "mes": "Mar", "faturamento": 31000, "pedidos": 198 },
+    { "mes": "Abr", "faturamento": 39800, "pedidos": 240 },
+    { "mes": "Mai", "faturamento": 43200, "pedidos": 265 },
+    { "mes": "Jun", "faturamento": 48500, "pedidos": 328 }
+  ],
+
+  "kpis": {
+    "clientes": { "value": 1245, "change": 8 },
+    "produtos": { "value": 86, "change": -2 }
+  },
+
+  "orders": [
+    { "numero": "#1024", "cliente": "João Silva",   "status": "Pago",      "valor": 520, "data": "2026-07-12" },
+    { "numero": "#1025", "cliente": "Maria Souza",  "status": "Pendente",  "valor": 180, "data": "2026-07-13" },
+    { "numero": "#1026", "cliente": "Pedro Lima",   "status": "Enviado",   "valor": 760, "data": "2026-07-13" },
+    { "numero": "#1027", "cliente": "Ana Ferreira",  "status": "Pago",      "valor": 340, "data": "2026-07-15" },
+    { "numero": "#1028", "cliente": "Carlos Souza",  "status": "Pendente",  "valor": 95,  "data": "2026-07-16" },
+    { "numero": "#1029", "cliente": "Fernanda Alves","status": "Enviado",   "valor": 610, "data": "2026-07-18" },
+    { "numero": "#1030", "cliente": "Bruno Costa",   "status": "Pago",      "valor": 1250,"data": "2026-07-20" },
+    { "numero": "#1031", "cliente": "Juliana Rocha", "status": "Pago",      "valor": 430, "data": "2026-07-21" }
+  ]
+}

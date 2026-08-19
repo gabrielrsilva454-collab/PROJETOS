@@ -499,26 +499,63 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     </section>
 
-                    <section class="card">
+                    <section class="card orders-table-card">
 
-                        <h2>📊 Resumo do período</h2>
+    <div class="orders-header">
+        <h2>📊 Resumo do período</h2>
+    </div>
 
-                        <p>
-                            O faturamento apresentou crescimento de
-                            <strong>12%</strong> neste mês.
-                        </p>
+    <div class="table-container">
 
-                        <p>
-                            O número de clientes aumentou
-                            <strong>8%</strong>.
-                        </p>
+        <table>
 
-                        <p>
-                            Foram registrados
-                            <strong>328 pedidos</strong>.
-                        </p>
+            <thead>
+                <tr>
+                    <th>Indicador</th>
+                    <th>Resultado</th>
+                    <th>Variação</th>
+                </tr>
+            </thead>
 
-                    </section>
+            <tbody>
+
+                <tr>
+                    <td>Faturamento</td>
+                    <td>R$ 48.500,00</td>
+                    <td>
+                        <span class="status pago">
+                            +12% este mês
+                        </span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Clientes</td>
+                    <td>1.245</td>
+                    <td>
+                        <span class="status pago">
+                            +8%
+                        </span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Pedidos</td>
+                    <td>328</td>
+                    <td>
+                        <span class="status pago">
+                            +5% este mês
+                        </span>
+                    </td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
                 `;
 
                 break;

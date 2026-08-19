@@ -1,4 +1,27 @@
-function inicializarPedidos() {
+// Formata valor numérico para exibição (R$ 520,00)
+
+function formatarValor(valor) {
+
+    return valor.toLocaleString("pt-BR", {
+        style: "currency",
+        currency: "BRL"
+    });
+
+}
+
+
+// Formata data ISO (2026-07-13) para exibição (13/07/2026)
+
+function formatarData(dataISO) {
+
+    const [ano, mes, dia] = dataISO.split("-");
+
+    return `${dia}/${mes}/${ano}`;
+
+}
+
+
+export function inicializarPedidos(pedidos) {
 
     const searchInput = document.getElementById("search");
     const statusFilter = document.getElementById("statusFilter");
@@ -45,14 +68,13 @@ function inicializarPedidos() {
         });
 
 
-        // ORDENAR POR DATA
+        // ORDENAR (valor já é number, data já é ISO -> ambos comparáveis direto)
 
         if (ordemSelecionada === "newest") {
 
             pedidosFiltrados.sort((a, b) => {
 
-                return converterData(b.data) -
-                       converterData(a.data);
+                return new Date(b.data) - new Date(a.data);
 
             });
 
@@ -63,22 +85,18 @@ function inicializarPedidos() {
 
             pedidosFiltrados.sort((a, b) => {
 
-                return converterData(a.data) -
-                       converterData(b.data);
+                return new Date(a.data) - new Date(b.data);
 
             });
 
         }
 
 
-        // ORDENAR POR VALOR
-
         if (ordemSelecionada === "highest") {
 
             pedidosFiltrados.sort((a, b) => {
 
-                return converterValor(b.valor) -
-                       converterValor(a.valor);
+                return b.valor - a.valor;
 
             });
 
@@ -89,8 +107,7 @@ function inicializarPedidos() {
 
             pedidosFiltrados.sort((a, b) => {
 
-                return converterValor(a.valor) -
-                       converterValor(b.valor);
+                return a.valor - b.valor;
 
             });
 
@@ -156,9 +173,9 @@ function inicializarPedidos() {
                     </span>
                 </td>
 
-                <td>${pedido.valor}</td>
+                <td>${formatarValor(pedido.valor)}</td>
 
-                <td>${pedido.data}</td>
+                <td>${formatarData(pedido.data)}</td>
 
             `;
 
@@ -166,36 +183,6 @@ function inicializarPedidos() {
             ordersTable.appendChild(row);
 
         });
-
-    }
-
-
-    // CONVERTE R$ 520,00 PARA 520
-
-    function converterValor(valor) {
-
-        return Number(
-            valor
-                .replace("R$", "")
-                .replace(/\./g, "")
-                .replace(",", ".")
-                .trim()
-        );
-
-    }
-
-
-    // CONVERTE 13/07/2026 PARA DATA
-
-    function converterData(data) {
-
-        const partes = data.split("/");
-
-        return new Date(
-            partes[2],
-            partes[1] - 1,
-            partes[0]
-        );
 
     }
 

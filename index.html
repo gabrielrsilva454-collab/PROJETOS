@@ -138,8 +138,6 @@
                         </span>
 
                     </button>
-                    ```
-
 
 
                     <div class="notification-panel" id="notificationPanel">
@@ -291,12 +289,12 @@
                                 Faturamento
                             </h3>
 
-                            <p class="value" data-value="48500" data-type="money">
+                            <p class="value" data-key="faturamento" data-type="money">
                                 0
                             </p>
 
                             <span class="positive">
-                                +12% este mês
+                                +0% este mês
                             </span>
 
                         </div>
@@ -316,12 +314,12 @@
                                 Clientes
                             </h3>
 
-                            <p class="value" data-value="1245" data-type="number">
+                            <p class="value" data-key="clientes" data-type="number">
                                 0
                             </p>
 
                             <span class="positive">
-                                +8% este mês
+                                +0% este mês
                             </span>
 
                         </div>
@@ -341,12 +339,12 @@
                                 Pedidos
                             </h3>
 
-                            <p class="value" data-value="328" data-type="number">
+                            <p class="value" data-key="pedidos" data-type="number">
                                 0
                             </p>
 
                             <span class="positive">
-                                +5% este mês
+                                +0% este mês
                             </span>
 
                         </div>
@@ -366,12 +364,12 @@
                                 Produtos
                             </h3>
 
-                            <p class="value" data-value="86" data-type="number">
+                            <p class="value" data-key="produtos" data-type="number">
                                 0
                             </p>
 
                             <span class="negative">
-                                -2% este mês
+                                -0% este mês
                             </span>
 
                         </div>
@@ -468,12 +466,14 @@
 
     <script src="JS/greeting.js"></script>
     <script src="JS/date.js"></script>
-    <script src="JS/chart.js"></script>
-    <script src="JS/cards.js"></script>
-    <script src="JS/menu.js"></script>
 
-    <script src="JS/orders.js"></script>
-    <script src="JS/search.js"></script>
+    <!-- Estes usam import/export (ES modules), por isso dependem uns dos outros
+         via dataService.js em vez de depender da ordem das tags -->
+    <script type="module" src="JS/chart.js"></script>
+    <script type="module" src="JS/cards.js"></script>
+    <script type="module" src="JS/orders.js"></script>
+
+    <script src="JS/menu.js"></script>
     <script src="JS/notifications.js"></script>
 
     <script src="JS/script.js"></script>
