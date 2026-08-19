@@ -622,6 +622,12 @@ document.addEventListener("DOMContentLoaded", () => {
             window.iniciarPedidos();
         }
 
+        // Reativa os ícones lucide (o HTML salvo em cache tem
+        // <i data-lucide="..."> "crus", sem o SVG gerado)
+        if (typeof lucide !== "undefined") {
+            lucide.createIcons();
+        }
+
     }
 
 
