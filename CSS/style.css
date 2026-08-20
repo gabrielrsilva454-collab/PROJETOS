@@ -1770,6 +1770,11 @@ main {
         box-shadow 0.2s ease;
 }
 
+.page-content {
+    min-width: 0;
+    width: 100%;
+}
+
 .card:hover {
     transform: translateY(-2px);
 
@@ -2492,17 +2497,14 @@ tbody tr:hover {
 
     /* PEDIDOS */
 
-.recent-orders {
-    width: 100%;
-    max-width: 100%;
-    padding: 15px;
-    overflow-x: auto;
-    overflow-y: hidden;
-}
+    .recent-orders {
+        padding: 15px;
+        overflow-x: auto;
+    }
 
-.recent-orders table {
-    min-width: 650px;
-}
+    .recent-orders table {
+        min-width: 650px;
+    }
 
 
     /* PRODUTOS */
