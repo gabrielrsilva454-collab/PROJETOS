@@ -2492,14 +2492,17 @@ tbody tr:hover {
 
     /* PEDIDOS */
 
-    .recent-orders {
-        padding: 15px;
-        overflow-x: auto;
-    }
+.recent-orders {
+    width: 100%;
+    max-width: 100%;
+    padding: 15px;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
 
-    .recent-orders table {
-        min-width: 650px;
-    }
+.recent-orders table {
+    min-width: 650px;
+}
 
 
     /* PRODUTOS */
